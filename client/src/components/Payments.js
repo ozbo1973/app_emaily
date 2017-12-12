@@ -12,6 +12,7 @@ class Payments extends Component {
         amount={500}
         token={token => this.props.handleToken(token)}
         stripeKey={process.env.REACT_APP_STRIPE_KEY}
+        //need to add the key from .env.production to heroku
       >
         <button className="btn">Add Credits</button>
       </StripeCheckout>
