@@ -11,11 +11,12 @@
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhooks\"",
     "port3000": "netstat -ano | findstr :3000",
     "port5000": "netstat -ano | findstr :5000",
-    "heroku-postbuild":
-      "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "nodeTaskList": "tasklist | findstr node",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "webhooks": "forever sendgrid_webhook.js"
   },
   "author": "",
   "license": "ISC",
@@ -24,10 +25,16 @@
     "concurrently": "^3.5.1",
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.2",
+    "localtunnel": "^1.8.3",
     "mongoose": "^4.13.1",
     "nodemon": "^1.12.1",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
+    "path-parser": "^3.0.1",
+    "sendgrid": "^5.2.2",
     "stripe": "^5.4.0"
+  },
+  "devDependencies": {
+    "forever": "^0.15.3"
   }
 }
